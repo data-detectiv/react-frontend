@@ -23,7 +23,7 @@ function App() {
         console.log(err.stack);
       } 
     }
-    (async () => await fetchItems())();
+    fetchItems();
   }, []);
 
 

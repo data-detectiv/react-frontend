@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Form from "./Form";
+import List from "./List";
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       try {
         const response = await fetch(`${API_URL}${reqType}`);
         const data = await response.json();
+        console.log(data);
         setItems(data);
       } catch (err) {
         console.error(err.message);
@@ -21,13 +23,14 @@ function App() {
   }, [reqType])
 
 
-
-  
   return (
     <div className="App">
       <Form 
         reqType={reqType}
         setReqType={setReqType}
+      />
+      <List 
+        items={items}
       />
     </div>
   );

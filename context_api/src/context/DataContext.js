@@ -5,10 +5,8 @@ const DataContext = createContext({});
 
 export const DataProvider = ({ children }) => {
     const [posts, setPosts] = useState([]);
-    const [search, setSearch] = useState('');
+    const [search] = useState('');
     const [searchResults, setSearchResults] = useState([]);
-    const [editTitle, setEditTitle] = useState('');
-    const [editBody, setEditBody] = useState('');
     const { data, fetchError, isLoading} = useAxiosFetch('http://localhost:3500/posts');
 
     useEffect(() => {
@@ -24,8 +22,7 @@ export const DataProvider = ({ children }) => {
 
     return (
         <DataContext.Provider value={{
-            search, setSearch, searchResults, fetchError, isLoading, setPosts,
-            posts, editBody, setEditBody, editTitle, setEditTitle
+            searchResults, fetchError, isLoading, setPosts, posts
         }}>
             {children}
         </DataContext.Provider>
